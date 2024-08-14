@@ -2,8 +2,12 @@
   "name": "monitora-pne-frontend",
   "version": "0.0.0",
   "scripts": {
-    "build:prod": "ng build",
-    "deploy": "firebase deploy --only hosting"
+    "build": "ng build --configuration production",
+    "ng": "ng",
+    "start": "ng serve",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

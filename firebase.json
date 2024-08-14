@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "src/app",
+    "public": "dist/monitora-pne-frontend",
     "ignore": [
       "firebase.json",
       "**/.*",
