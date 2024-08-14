@@ -9,7 +9,6 @@
         "@schematics/angular:component": {
           "style": "scss",
           "skipTests": true
-
         },
         "@schematics/angular:class": {
           "skipTests": true
@@ -100,13 +99,17 @@
               {
                 "glob": "**/*",
                 "input": "src/assets/",
-                "ignore": ["**/*.scss"],
+                "ignore": [
+                  "**/*.scss"
+                ],
                 "output": "/assets/"
               },
               "src/assets"
             ],
-            "styles": ["node_modules/font-awesome/scss/font-awesome.scss", 
-             "src/styles.scss"],
+            "styles": [
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "src/styles.scss"
+            ],
             "scripts": [],
             "extractLicenses": false,
             "sourceMap": true,
@@ -171,8 +174,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         },
