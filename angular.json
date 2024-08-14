@@ -34,8 +34,27 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "outputPath": "dist/monitora-pne-frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "src/styles.scss"
+            ],
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "allowedCommonJsDependencies": [
               "lodash",
               "rxjs-compat",
@@ -85,40 +104,7 @@
               "apexcharts",
               "apexcharts/dist/apexcharts.min.js",
               "calendar-utils/date-adapters/date-fns"
-            ],
-            "outputPath": "dist/monitora-pne-frontend",
-            "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/assets/images/favicon.png",
-              {
-                "glob": "**/*",
-                "input": "src/assets/",
-                "ignore": [
-                  "**/*.scss"
-                ],
-                "output": "/assets/"
-              },
-              "src/assets"
-            ],
-            "styles": [
-              "node_modules/font-awesome/scss/font-awesome.scss",
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "extractLicenses": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true,
-            "browser": "src/main.ts",
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "."
-              ]
-            }
+            ]
           },
           "configurations": {
             "production": {
