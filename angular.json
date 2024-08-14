@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cuba": {
+    "monitora-pne-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -88,7 +88,7 @@
               "calendar-utils/date-adapters/date-fns"
             ],
             "outputPath": {
-              "base": "dist/cuba"
+              "base": "dist/monitora-pne-frontend"
             },
             "index": "src/index.html",
             "polyfills": [
@@ -150,18 +150,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "cuba:build"
+            "buildTarget": "monitora-pne-frontend:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "cuba:build:production"
+              "buildTarget": "monitora-pne-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "cuba:build"
+            "buildTarget": "monitora-pne-frontend:build"
           }
         },
         "test": {
@@ -180,11 +180,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cuba:serve"
+            "devServerTarget": "monitora-pne-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cuba:serve:production"
+              "devServerTarget": "monitora-pne-frontend:serve:production"
             }
           }
         }
