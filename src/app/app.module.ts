@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
@@ -24,31 +24,24 @@ import { LoginComponent } from './auth/login/login.component';
 
 import { OverlayModule } from '@angular/cdk/overlay';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    OverlayModule,
-    SharedModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgbModule,
-//     // for HttpClient use:
-    LoadingBarHttpClientModule,
-//     // for Router use:
-    LoadingBarRouterModule,
-//     // for Core use:
-    LoadingBarModule
-  ],
-  providers: [ CookieService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        OverlayModule,
+        SharedModule,
+        AppRoutingModule,
+        NgbModule,
+        //     // for HttpClient use:
+        LoadingBarHttpClientModule,
+        //     // for Router use:
+        LoadingBarRouterModule,
+        //     // for Core use:
+        LoadingBarModule], providers: [CookieService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
