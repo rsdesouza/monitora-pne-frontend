@@ -86,9 +86,7 @@
               "apexcharts/dist/apexcharts.min.js",
               "calendar-utils/date-adapters/date-fns"
             ],
-            "outputPath": {
-              "base": "dist/monitora-pne-frontend"
-            },
+            "outputPath": "dist/monitora-pne-frontend",
             "index": "src/index.html",
             "polyfills": [
               "src/polyfills.ts"
