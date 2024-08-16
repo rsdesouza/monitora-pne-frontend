@@ -15,7 +15,6 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { TapToTopComponent } from "./components/tap-to-top/tap-to-top.component";
 // Header Elements Components
 import { SearchComponent } from "./components/header/elements/search/search.component";
-import { LanguagesComponent } from "./components/header/elements/languages/languages.component";
 import { NotificationComponent } from "./components/header/elements/notification/notification.component";
 import { BookmarkComponent } from "./components/header/elements/bookmark/bookmark.component";
 import { CartComponent } from "./components/header/elements/cart/cart.component";
@@ -28,7 +27,6 @@ import { NavService } from "./services/nav.service";
 import { DecimalPipe } from "@angular/common";
 import { SvgIconComponent } from "./components/svg-icon/svg-icon.component";
 import { SwiperModule } from "swiper/angular";
-import { SwiperComponent } from "./components/header/elements/swiper/swiper.component";
 
 @NgModule({
   declarations: [
@@ -42,14 +40,12 @@ import { SwiperComponent } from "./components/header/elements/swiper/swiper.comp
     LoaderComponent,
     TapToTopComponent,
     SearchComponent,
-    LanguagesComponent,
     NotificationComponent,
     BookmarkComponent,
     CartComponent,
     MessageBoxComponent,
     MyAccountComponent,
     SvgIconComponent,
-    SwiperComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, NgbModule, SwiperModule],
   providers: [NavService, LayoutService, DecimalPipe],

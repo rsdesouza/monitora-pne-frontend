@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from './auth.service'; // Importa o serviço de autenticação que você criará
 
 @Component({
   selector: "app-login",
@@ -8,34 +10,34 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  public newUser = false;
-  // public user: firebase.User;
   public loginForm: FormGroup;
-  public show: boolean = false
-  public errorMessage: any;
+  public errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, public router: Router) {
+  constructor(
+    private fb: FormBuilder, 
+    public router: Router, 
+    private authService: AuthService, // Injete o serviço de autenticação
+    private afAuth: AngularFireAuth
+  ) {
     this.loginForm = this.fb.group({
-      email: ["Test@gmail.com", [Validators.required, Validators.email]],
-      password: ["test123", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", Validators.required],
     });
   }
 
   ngOnInit() {}
 
-  login() {
-    if (this.loginForm.value["email"] == "Test@gmail.com" && this.loginForm.value["password"] == "test123") {
-      let user = {
-        email: "Test@gmail.com",
-        password: "test123",
-        name: "test user",
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      this.router.navigate(["/dashboard/default"]);
+  async login() {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      try {
+        const userCredential = await this.authService.login(email, password);
+        localStorage.setItem("user", JSON.stringify(userCredential.user));
+        this.router.navigate(["/home"]);
+      } catch (error) {
+        this.errorMessage = "Falha ao fazer login. Verifique suas credenciais.";
+      }
     }
   }
 
-  showPassword(){
-    this.show = !this.show
-  }
 }
