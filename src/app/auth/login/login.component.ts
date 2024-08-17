@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AuthService } from './auth.service'; // Importa o serviço de autenticação que você criará
+import { AuthService } from './auth.service';
 
 @Component({
   selector: "app-login",
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     public router: Router, 
-    private authService: AuthService, // Injete o serviço de autenticação
+    private authService: AuthService,
     private afAuth: AngularFireAuth
   ) {
     this.loginForm = this.fb.group({
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       try {
         const userCredential = await this.authService.login(email, password);
         localStorage.setItem("user", JSON.stringify(userCredential.user));
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/simple-page/first-page"]);
       } catch (error) {
         this.errorMessage = "Falha ao fazer login. Verifique suas credenciais.";
       }
