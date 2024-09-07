@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <img src="assets/images/logo/logo.png" alt="Logo PNE" class="logo-img mb-4">
+
+      <!-- Campo de seleção usando NG Select -->
+      <ng-select 
+        [items]="estados" 
+        bindLabel="name" 
+        placeholder="Selecione o Estado"
+        [(ngModel)]="selectedEstado"
+        class="custom-ng-select"
+        [searchable]="true"
+        [clearable]="true">
+      </ng-select>
+    </div>
+  </div>
+</div>

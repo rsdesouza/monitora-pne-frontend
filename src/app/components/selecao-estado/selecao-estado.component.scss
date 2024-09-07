@@ -1,0 +1,50 @@
+.container {
+  margin-top: 50px;
+}
+
+.logo-img {
+  width: 150px;
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.ng-select {
+  width: 100%;
+  font-size: 18px; /* Aumenta o tamanho da fonte do texto */
+}
+
+.custom-ng-select {
+  border: 2px solid #7b4fae;
+  border-radius: 4px;
+  font-size: 18px; /* Aumenta o tamanho da fonte no campo de seleção */
+  padding: 10px; /* Aumenta o espaço interno do campo */
+}
+
+::ng-deep .ng-select {
+  width: 100%;  /* Certifica que o dropdown tem a largura da caixa de seleção */
+}
+
+::ng-deep .ng-dropdown-panel {
+  font-size: 18px; /* Aumenta o tamanho da fonte dos itens da lista */
+  width: 100%;  /* Faz com que o dropdown tenha a mesma largura da caixa */
+  left: 0px !important;  /* Garante que o dropdown comece alinhado à esquerda */
+  border-radius: 4px;  /* Adiciona um arredondamento aos cantos do dropdown */
+}
+
+::ng-deep .ng-option {
+  padding: 12px 20px; /* Aumenta o tamanho dos itens na lista de seleção */
+  font-size: 18px; /* Ajusta a fonte dos itens */
+}
+
+::ng-deep .ng-option:hover {
+  background-color: #f1f1f1;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
