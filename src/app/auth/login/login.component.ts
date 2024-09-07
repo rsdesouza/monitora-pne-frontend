@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       try {
         const userCredential = await this.authService.login(email, password);
         localStorage.setItem("user", JSON.stringify(userCredential.user));
-        this.router.navigate(["/simple-page/first-page"]);
+        this.router.navigate(["/selecao-estado"]);
       } catch (error) {
         this.errorMessage = "Falha ao fazer login. Verifique suas credenciais.";
       }
