@@ -6,7 +6,7 @@ import { PlanoAcaoComponent } from "./plano-acao/plano-acao.component";
 
 const routes: Routes = [
   {
-    path: "home",
+    path: "",
     children: [
       {
         path: "cadastro",
