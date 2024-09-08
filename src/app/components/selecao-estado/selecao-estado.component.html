@@ -11,7 +11,8 @@
         [(ngModel)]="selectedEstado"
         class="custom-ng-select"
         [searchable]="true"
-        [clearable]="true">
+        [clearable]="true"
+        (change)="onEstadoChange($event)"> <!-- Chama o método ao mudar o estado -->
       </ng-select>
     </div>
   </div>

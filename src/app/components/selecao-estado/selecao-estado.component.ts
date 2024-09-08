@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selecao-estado',
@@ -12,31 +13,20 @@ export class SelecaoEstadoComponent implements OnInit {
     { name: 'Pernambuco' },
     { name: 'Paraíba' },
     { name: 'Amazonas' },
-    // Adicione mais estados conforme necessário
   ];
 
-  filteredEstados: any[] = [];
-  searchTerm: string = '';
   selectedEstado: any;
 
-  ngOnInit(): void {
-    this.filteredEstados = this.estados;
-  }
+  constructor(private router: Router) {}
 
-  // Função para filtrar estados com base na entrada do usuário
-  filterEstados(): void {
-    if (this.searchTerm) {
-      const searchLower = this.searchTerm.toLowerCase();
-      this.filteredEstados = this.estados.filter(estado =>
-        estado.name.toLowerCase().includes(searchLower)
-      );
-    } else {
-      this.filteredEstados = this.estados;
-    }
-  }
+  ngOnInit(): void {}
 
-  // Função para selecionar um estado
-  selectEstado(estado: any): void {
+  // Função para redirecionar após a seleção de um estado
+  onEstadoChange(estado: any): void {
     this.selectedEstado = estado;
+    if (estado) {
+      localStorage.setItem('estadoSelecionado', JSON.stringify(estado));  // Salva o estado no localStorage
+      this.router.navigate(['/home']);  // Redireciona para a página Home
+    }
   }
 }
