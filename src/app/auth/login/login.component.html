@@ -42,8 +42,18 @@
                   </div>
                   <a [routerLink]="'/authentication/forgot-password'" class="link">Esqueceu a senha?</a>
                   <div class="text-end mt-3">
-                    <button class="btn btn-primary d-block w-100" [disabled]="!loginForm.valid" (click)="login()" type="button"><span>Entrar</span></button>
+                    <button class="btn btn-primary d-block w-100" 
+                            [disabled]="!loginForm.valid || loading" 
+                            (click)="login()" 
+                            type="button">
+                      <ng-container *ngIf="!loading; else loadingTemplate">
+                        <span>Entrar</span>
+                      </ng-container>
+                    </button>
                   </div>
+                  <ng-template #loadingTemplate>
+                    <span>Carregando...</span>
+                  </ng-template>
                 </div>
               </form>
             </div>

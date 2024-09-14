@@ -29,10 +29,15 @@ export class AuthService {
   }
 
   // Método de login que retorna o UserCredential
-  async login(email: string, password: string): Promise<firebase.auth.UserCredential> {
-    const credential = await this.afAuth.signInWithEmailAndPassword(email, password);
-    this.userSubject.next(credential.user);
-    return credential;
+  async login(email: string, password: string): Promise<firebase.auth.UserCredential | null> {
+    try {
+      const credential = await this.afAuth.signInWithEmailAndPassword(email, password);
+      this.userSubject.next(credential.user);
+      return credential;
+    } catch (error) {
+      console.error('Erro de autenticação:', error);
+      throw new Error('Falha ao fazer login. Verifique suas credenciais.');
+    }
   }
 
   async logout() {
