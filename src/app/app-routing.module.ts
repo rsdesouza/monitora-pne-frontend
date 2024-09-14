@@ -14,7 +14,6 @@ const routes: Routes = [
   {
     path: 'selecao-estado',
     component: SelecaoEstadoComponent,
-    canActivate: [AuthGuard] // Proteção da rota com o AuthGuard
   },
   {
     path: '',
@@ -32,18 +31,16 @@ const routes: Routes = [
   {
     path: '',
     component: ContentComponent,
-    canActivate: [AdminGuard],
     children: content
   },
   {
     path: '',
     component: FullComponent,
-    canActivate: [AdminGuard],
     children: full
   },
   {
     path: '**',
-    redirectTo: 'auth/login' // Redireciona rotas inválidas para o login
+    redirectTo: 'home' // Redireciona rotas inválidas para o login
   }
 ];
 

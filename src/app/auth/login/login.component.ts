@@ -45,4 +45,9 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+   // Método de Acesso Anônimo
+  acessoAnonimo() {
+    localStorage.setItem("isAnonymous", "true");  // Marca o usuário como anônimo
+    this.router.navigate(['/selecao-estado']);  // Redireciona para seleção de estado
+  }
 }
