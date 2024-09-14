@@ -1,0 +1,54 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens "quebrem" de linha */
+    margin-top: 10px; /* Ajuste de margem superior */
+    gap: 20px; /* Espaçamento entre os cartões */
+  }
+  
+  .dashboard-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-gap: 20px; /* Espaçamento entre os itens do grid */
+    width: 100%;
+    max-width: 1200px; /* Limita a largura total dos itens */
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Cores para os valores */
+.card h2 {
+  font-weight: bold;
+}
+
+.value-progress {
+  color: black; /* 30% */
+}
+
+.value-days {
+  color: #9ACD32; /* 26 d */
+}
+
+.value-total {
+  color: green; /* 10 */
+}
+
+.value-discontinued {
+  color: black; /* 2 */
+}
+
+.value-completed {
+  color: green; /* 10 */
+}
+
+.value-not-completed {
+  color: red; /* 4 */
+}

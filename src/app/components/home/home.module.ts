@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { EstrategiaComponent } from './estrategia/estrategia.component';
 import { PlanoAcaoComponent } from './plano-acao/plano-acao.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module'; // Certifique-se de que o caminho está correto
 
@@ -11,6 +12,7 @@ import { SharedModule } from 'src/app/shared/shared.module'; // Certifique-se de
     CadastroComponent,
     EstrategiaComponent,
     PlanoAcaoComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
