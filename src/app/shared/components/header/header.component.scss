@@ -1,0 +1,23 @@
+/* Estilos quando a barra lateral estiver colapsada */
+.close_icon .toggle-sidebar app-feather-icons {
+    width: 24px; /* Tamanho reduzido do ícone */
+    height: 24px;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  
+  .close_icon .logo-wrapper img {
+    width: 30px; /* Reduz o tamanho do logo ao colapsar */
+    transition: width 0.3s ease;
+  }
+  
+  /* Estilos padrão (barra lateral expandida) */
+  .toggle-sidebar app-feather-icons {
+    width: 40px; /* Tamanho original do ícone */
+    height: 40px;
+  }
+  
+  .logo-wrapper img {
+    width: 50px; /* Tamanho original do logo */
+    height: auto;
+  }
+  

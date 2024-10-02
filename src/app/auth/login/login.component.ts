@@ -26,18 +26,28 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  public loading = false;
+
   async login() {
     if (this.loginForm.valid) {
+      this.loading = true;  // Inicia o carregamento
       const { email, password } = this.loginForm.value;
       try {
-        const userCredential: firebase.auth.UserCredential = await this.authService.login(email, password);  // Utilizando o tipo do Firebase compat
-        if (userCredential && userCredential.user) {
-          localStorage.setItem("user", JSON.stringify(userCredential.user));  // Armazena o usuário no localStorage
-          this.router.navigate(["/selecao-estado"]);  // Redireciona após login
+        const userCredential = await this.authService.login(email, password);
+        if (userCredential) {
+          localStorage.setItem('user', JSON.stringify(userCredential.user));
+          this.router.navigate(['/selecao-estado']);
         }
       } catch (error) {
-        this.errorMessage = "Falha ao fazer login. Verifique suas credenciais.";
+        this.errorMessage = 'Falha ao fazer login. Verifique suas credenciais.';
+      } finally {
+        this.loading = false;  // Para o carregamento
       }
     }
+  }
+   // Método de Acesso Anônimo
+  acessoAnonimo() {
+    localStorage.setItem("isAnonymous", "true");  // Marca o usuário como anônimo
+    this.router.navigate(['/selecao-estado']);  // Redireciona para seleção de estado
   }
 }
