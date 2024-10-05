@@ -1,16 +1,90 @@
-<app-breadcrumb [title]="'Plano de Ação'" [items]="['Home']" [active_item]="'Plano'"></app-breadcrumb>
+<app-breadcrumb [items]="['Home']" [active_item]="'Planos de Ação'"></app-breadcrumb>
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12">
+  <!-- Cards de Resumo -->
+  <div class="row text-center">
+    <div class="col-md-3">
       <div class="card">
-        <div class="card-header">
-          <h5>Sample Card</h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-        </div>
         <div class="card-body">
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."</p>
+          <h3>{{ totalPlanosAcao }}</h3>
+          <p>Planos de Ação</p>
         </div>
       </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-success">{{ concluidos }}</h3>
+          <p>Concluídos</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-warning">{{ emAndamento }}</h3>
+          <p>Em Andamento</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-danger">{{ atrasados }}</h3>
+          <p>Atrasados</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alternância entre Tabela e Gráficos -->
+  <div class="row mt-4">
+    <div class="col-md-12 text-end">
+      <button class="btn btn-light" [ngClass]="{'active': currentView === 'table'}" (click)="switchView('table')">Tabela</button>
+      <button class="btn btn-light" [ngClass]="{'active': currentView === 'dashboard'}" (click)="switchView('dashboard')">Gráficos</button>
+    </div>
+  </div>
+
+  <!-- Tabela de Indicadores (exibida se 'currentView' for 'table') -->
+  <div class="row mt-3" *ngIf="currentView === 'table'">
+    <div class="col-md-12">
+      <!-- Conteúdo dos Indicadores -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="badge bg-light text-dark">Indicador 1 - Planos de Ação</span>
+            <span class="text-danger">Progresso: 40%</span>
+          </div>
+
+          <!-- Estratégias dentro do Indicador 1 -->
+          <div class="mt-3">
+            <p class="mb-1">Promover a formação continuada dos professores para a utilização de softwares educativos.</p>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+            </div>
+
+            <p class="mt-3 mb-1">Incentivar a utilização de novas plataformas educacionais.</p>
+            <div class="progress">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráficos (exibidos se 'currentView' for 'dashboard') -->
+  <div class="row mt-3" *ngIf="currentView === 'dashboard'">
+    <div class="col-md-12">
+      <!-- Gráficos podem ser inseridos aqui -->
+      <div id="chart"></div>
+    </div>
+  </div>
+
+  <!-- Dashboard Streamlit (exibido se 'currentView' for 'dashboard') -->
+  <div class="row mt-3" *ngIf="currentView === 'dashboard'">
+    <div class="col-md-12">
+      <iframe src="https://monitora-pne-dashboard-plano-acao-386059856247.us-central1.run.app/" width="100%" height="600" frameborder="0"></iframe>
     </div>
   </div>
 </div>
