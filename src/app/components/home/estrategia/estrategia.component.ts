@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class EstrategiaComponent {
   currentView: string = 'table';  // Define a visualização inicial como 'table'
 
+  // Dados dos Estratégias
+  estrategias: number = 16;
+  concluidos: number = 12;
+  emAndamento: number = 0;
+
   // Alterna entre as visualizações de Tabela, Gráficos e Streamlit
   switchView(view: string): void {
     this.currentView = view;
