@@ -3,35 +3,27 @@
 <div class="container-fluid">
   <!-- Cards de Resumo -->
   <div class="row text-center">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h3>{{ totalPlanosAcao }}</h3>
+          <h3>{{ 6 }}</h3> <!-- Total de Planos de Ação -->
           <p>Planos de Ação</p>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h3 class="text-success">{{ concluidos }}</h3>
+          <h3 class="text-success">{{ 2 }}</h3> <!-- Planos Concluídos -->
           <p>Concluídos</p>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h3 class="text-warning">{{ emAndamento }}</h3>
+          <h3 class="text-warning">{{ 3 }}</h3> <!-- Planos em Andamento -->
           <p>Em Andamento</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="text-danger">{{ atrasados }}</h3>
-          <p>Atrasados</p>
         </div>
       </div>
     </div>
@@ -47,46 +39,88 @@
 
   <!-- Tabela de Indicadores (exibida se 'currentView' for 'table') -->
   <div class="row mt-3" *ngIf="currentView === 'table'">
+    <!-- Indicador 15A -->
     <div class="col-md-12">
-      <!-- Conteúdo dos Indicadores -->
       <div class="card mb-3">
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <span class="badge bg-light text-dark">Indicador 1 - Planos de Ação</span>
-            <span class="text-danger">Atrasado</span> <!-- Aqui, status ao invés de porcentagem -->
+            <span class="badge bg-light text-dark">Indicador 15A - Educação Infantil - Estratégia: Plano estratégico conjunto para diagnóstico e formação</span>
+            <span class="text-warning">Em andamento</span>
+          </div>
+          
+          <!-- Estratégias dentro do Indicador 15A -->
+          <div class="mt-3">
+            <p class="mb-1">Consolidar financiamento estudantil</p>
+            <span class="text-success">Concluído</span>
           </div>
 
-          <!-- Estratégias dentro do Indicador 1 -->
           <div class="mt-3">
-            <p class="mb-1">Promover a formação continuada dos professores para a utilização de softwares educativos.</p>
-            <span class="badge bg-warning">Em andamento</span> <!-- Status da estratégia -->
-          </div>
-
-          <div class="mt-3">
-            <p class="mb-1">Incentivar a utilização de novas plataformas educacionais.</p>
-            <span class="badge bg-success">Concluído</span> <!-- Status da estratégia -->
+            <p class="mb-1">Implementar parcerias com universidades para formar novos professores</p>
+            <span class="text-warning">Em andamento</span>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Indicador 15B -->
     <div class="col-md-12">
       <div class="card mb-3">
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <span class="badge bg-light text-dark">Indicador 2 - Planos de Ação</span>
-            <span class="text-warning">Em andamento</span> <!-- Status do indicador -->
+            <span class="badge bg-light text-dark">Indicador 15B - Anos Iniciais do Ensino Fundamental - Estratégia: Ampliar programa de iniciação à docência</span>
+            <span class="text-warning">Em andamento</span>
           </div>
 
-          <!-- Estratégias dentro do Indicador 2 -->
+          <!-- Estratégias dentro do Indicador 15B -->
           <div class="mt-3">
-            <p class="mb-1">Desenvolver novas metodologias de ensino com suporte digital.</p>
-            <span class="badge bg-danger">Atrasado</span> <!-- Status da estratégia -->
+            <p class="mb-1">Expandir plataforma digital de matrículas</p>
+            <span class="text-warning">Em andamento</span>
           </div>
 
           <div class="mt-3">
-            <p class="mb-1">Estabelecer parcerias com universidades para desenvolver tecnologias educacionais.</p>
-            <span class="badge bg-success">Concluído</span> <!-- Status da estratégia -->
+            <p class="mb-1">Desenvolver metodologias pedagógicas digitais</p>
+            <span class="text-warning">Em andamento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador 15C -->
+    <div class="col-md-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="badge bg-light text-dark">Indicador 15C - Anos Finais do Ensino Fundamental - Estratégia: Programas de formação para áreas especiais</span>
+            <span class="text-warning">Em andamento</span>
+          </div>
+
+          <!-- Estratégias dentro do Indicador 15C -->
+          <div class="mt-3">
+            <p class="mb-1">Reforma curricular dos cursos de licenciatura</p>
+            <span class="text-warning">Em andamento</span>
+          </div>
+
+          <div class="mt-3">
+            <p class="mb-1">Formação contínua para escolas em comunidades quilombolas</p>
+            <span class="text-success">Concluído</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador 15D -->
+    <div class="col-md-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="badge bg-light text-dark">Indicador 15D - Ensino Médio - Estratégia: Valorizar as práticas de ensino e os estágios</span>
+            <span class="text-warning">Em andamento</span>
+          </div>
+
+          <!-- Estratégias dentro do Indicador 15D -->
+          <div class="mt-3">
+            <p class="mb-1">Implementar cursos e programas especiais para formação de docentes</p>
+            <span class="text-success">Concluído</span>
           </div>
         </div>
       </div>
