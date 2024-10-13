@@ -6,7 +6,7 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h3>{{ estrategias }}</h3>
+          <h3>{{ 13 }}</h3> <!-- Total de Estratégias -->
           <p>Estratégias</p>
         </div>
       </div>
@@ -14,7 +14,7 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h3 class="text-success">{{ concluidos }}</h3>
+          <h3 class="text-success">{{ 6 }}</h3> <!-- Estratégias Concluídas -->
           <p>Concluídos</p>
         </div>
       </div>
@@ -22,12 +22,13 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h3 class="text-warning">{{ emAndamento }}</h3>
+          <h3 class="text-warning">{{ 7 }}</h3> <!-- Estratégias em Andamento -->
           <p>Em Andamento</p>
         </div>
       </div>
     </div>
   </div>
+  
   <!-- Alternância entre Tabela e Gráficos -->
   <div class="row">
     <div class="col-md-12 text-end">
@@ -38,28 +39,70 @@
 
   <!-- Tabela de Indicadores (exibida se 'currentView' for 'table') -->
   <div class="row mt-4" *ngIf="currentView === 'table'">
-    <!-- Indicador 1 -->
+    <!-- Indicador 15A -->
     <div class="col-md-12">
       <div class="card mb-3">
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <span class="badge bg-light text-dark">Indicador 1 - Estratégias</span>
-            <span class="text-danger">23%</span>
+            <span class="badge bg-light text-dark">Indicador 15A - Educação Infantil</span>
           </div>
           
-          <!-- Estratégias dentro do Indicador 1 -->
+          <!-- Estratégias dentro do Indicador 15A -->
           <div class="mt-3">
-            <p class="mb-1">Promover a formação continuada dos professores para a utilização de softwares educativos.</p>
+            <p class="mb-1">Plano estratégico conjunto para diagnóstico e formação</p>
             <div class="progress">
               <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
             </div>
 
-            <p class="mt-3 mb-1">Promover o uso de plataformas digitais nas escolas.</p>
+            <p class="mt-3 mb-1">Consolidar financiamento estudantil</p>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador 15B -->
+    <div class="col-md-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="badge bg-light text-dark">Indicador 15B - Anos Iniciais do Ensino Fundamental</span>
+          </div>
+
+          <!-- Estratégias dentro do Indicador 15B -->
+          <div class="mt-3">
+            <p class="mb-1">Ampliar programa de iniciação à docência</p>
+            <div class="progress">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+            </div>
+
+            <p class="mt-3 mb-1">Expandir plataforma digital de matrículas</p>
+            <div class="progress">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador 15C -->
+    <div class="col-md-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="badge bg-light text-dark">Indicador 15C - Anos Finais do Ensino Fundamental</span>
+          </div>
+
+          <!-- Estratégias dentro do Indicador 15C -->
+          <div class="mt-3">
+            <p class="mb-1">Programas de formação para áreas especiais</p>
             <div class="progress">
               <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
             </div>
 
-            <p class="mt-3 mb-1">Desenvolver material didático com foco em tecnologias digitais.</p>
+            <p class="mt-3 mb-1">Reforma curricular dos cursos de licenciatura</p>
             <div class="progress">
               <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
             </div>
@@ -68,30 +111,24 @@
       </div>
     </div>
 
-    <!-- Indicador 2 -->
+    <!-- Indicador 15D -->
     <div class="col-md-12">
       <div class="card mb-3">
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <span class="badge bg-light text-dark">Indicador 2 - Estratégias</span>
-            <span class="text-danger">23%</span>
+            <span class="badge bg-light text-dark">Indicador 15D - Ensino Médio</span>
           </div>
 
-          <!-- Estratégias dentro do Indicador 2 -->
+          <!-- Estratégias dentro do Indicador 15D -->
           <div class="mt-3">
-            <p class="mb-1">Promover a inclusão de conteúdos digitais nos currículos.</p>
+            <p class="mb-1">Valorizar as práticas de ensino e os estágios</p>
             <div class="progress">
               <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
             </div>
 
-            <p class="mt-3 mb-1">Fomentar a criação de aplicativos educativos.</p>
+            <p class="mt-3 mb-1">Implementar cursos e programas especiais para formação de docentes</p>
             <div class="progress">
               <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-            </div>
-
-            <p class="mt-3 mb-1">Estabelecer parcerias com universidades para desenvolvimento de tecnologia educacional.</p>
-            <div class="progress">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
             </div>
           </div>
         </div>
