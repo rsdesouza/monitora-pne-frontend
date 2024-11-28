@@ -4,34 +4,58 @@
     <div class="col-sm-12">
       <div class="dashboard">
         <div class="dashboard-item">
+          <!-- Progresso -->
           <div class="card">
-            <h2 class="value-progress">30%</h2>
+            <h2 class="value-progress">{{ progresso | number:'1.0-0' }}%</h2>
             <p>Progresso de todas as estratégias cadastradas na plataforma, o objetivo é ser atingido é 100%.</p>
           </div>
-      
+          
+          <!-- Dias Faltantes -->
           <div class="card">
-            <h2 class="value-days">26 d</h2>
+            <h2 class="value-days">{{ diasFaltantes }} d</h2>
             <p>Total de dias faltantes para atingimento dos objetivos cadastrados na plataforma.</p>
           </div>
-      
+          
+          <!-- Total de Estratégias -->
           <div class="card">
-            <h2 class="value-total">10</h2>
+            <h2 class="value-total">{{ totalEstrategias }}</h2>
             <p>Total de estratégias cadastradas na plataforma.</p>
           </div>
-      
+          
+          <!-- Estratégias Descontinuadas -->
           <div class="card">
-            <h2 class="value-discontinued">2</h2>
+            <h2 class="value-discontinued">{{ estrategiasDescontinuadas }}</h2>
             <p>Total de estratégias descontinuadas.</p>
           </div>
-      
+          
+          <!-- Estratégias Concluídas -->
           <div class="card">
-            <h2 class="value-completed">10</h2>
+            <h2 class="value-completed">{{ estrategiasConcluidas }}</h2>
             <p>Total de estratégias concluídas.</p>
           </div>
-      
+          
+          <!-- Estratégias Não Concluídas -->
           <div class="card">
-            <h2 class="value-not-completed">4</h2>
+            <h2 class="value-not-completed">{{ estrategiasNaoConcluidas }}</h2>
             <p>Total de estratégias não concluídas.</p>
+          </div>
+          
+          <!-- Planos Concluídos -->
+          <div class="card">
+            <h2 class="value-planos-completed">{{ planosConcluidos }}</h2>
+            <p>Total de planos de ação concluídos.</p>
+          </div>
+          
+          <!-- Planos em Andamento -->
+          <div class="card">
+            <h2 class="value-planos-ongoing">{{ planosEmAndamento }}</h2>
+            <p>Total de planos de ação em andamento.</p>
+          </div>
+          
+          <!-- Planos Descontinuados -->
+          <div class="card">
+            <h2 class="value-planos-discontinued">{{ planosDescontinuados }}</h2>
+            <p>Total de planos de ação descontinuados.</p>
           </div>
         </div>
       </div>
