@@ -14,7 +14,12 @@ export class CadastroComponent implements OnInit {
   planosPaginados: any[] = [];
   paginas: number[] = [];
   paginaAtual: number = 1;
-  itensPorPagina: number = 5;
+  itensPorPagina: number = 15;
+
+  itemSelecionadoId: number | null = null; // ID do item que será excluído
+  itemEditando: any = {}; // Objeto para armazenar o item em edição
+  mensagemSucesso: string | null = null; // Mensagem de sucesso
+  mostrarModalEdicao: boolean = false; // Controle para exibir ou ocultar o modal de edição
 
   private readonly estrategiasUrl = 'https://monitora-pne-backend-386059856247.us-central1.run.app/api/estrategias';
   private readonly planosUrl = 'https://monitora-pne-backend-386059856247.us-central1.run.app/api/planos';
@@ -36,7 +41,6 @@ export class CadastroComponent implements OnInit {
     });
   }
 
-  // Funções de Planos de Ação
   carregarPlanosAcao() {
     this.http.get(this.planosUrl).subscribe(data => {
       this.planosAcao = data as any[];
@@ -71,7 +75,7 @@ export class CadastroComponent implements OnInit {
 
   alternarAba(aba: 'estrategias' | 'planos') {
     this.abaAtual = aba;
-    this.paginaAtual = 1; // Reinicia a paginação ao alternar de aba
+    this.paginaAtual = 1;
     if (aba === 'estrategias') {
       this.carregarEstrategias();
     } else {
@@ -84,7 +88,44 @@ export class CadastroComponent implements OnInit {
   }
 
   editar(item: any) {
-    // Lógica para editar
+    this.itemEditando = { ...item }; // Clona o item para evitar alterações no original
+    if (this.abaAtual === 'estrategias') {
+      this.itemEditando.nomeEstrategia = item.nomeEstrategia || '';
+    } else if (this.abaAtual === 'planos') {
+      this.itemEditando.planoDeAcao = item.planoDeAcao || '';
+      this.itemEditando.observacao = item.observacao || '';
+      this.itemEditando.dataInicio = item.dataInicio || '';
+      this.itemEditando.dataFim = item.dataFim || '';
+    }
+    this.mostrarModalEdicao = true; // Exibe o modal
+  }
+  
+  fecharModalEdicao() {
+    this.mostrarModalEdicao = false; // Fecha o modal de edição
+    this.itemEditando = {}; // Limpa o objeto de edição
+  }
+
+  confirmarEdicao() {
+    const url =
+      this.abaAtual === 'estrategias'
+        ? `${this.estrategiasUrl}/${this.itemEditando.index}`
+        : `${this.planosUrl}/${this.itemEditando.index}`;
+
+    this.http.put(url, this.itemEditando).subscribe(
+      () => {
+        this.mensagemSucesso = 'Item editado com sucesso!';
+        setTimeout(() => this.fecharMensagemSucesso(), 3000);
+        if (this.abaAtual === 'estrategias') {
+          this.carregarEstrategias();
+        } else {
+          this.carregarPlanosAcao();
+        }
+        this.fecharModalEdicao(); // Fecha o modal após salvar
+      },
+      error => {
+        console.error('Erro ao editar item:', error);
+      }
+    );
   }
 
   excluir(id: number) {
@@ -92,8 +133,11 @@ export class CadastroComponent implements OnInit {
       this.abaAtual === 'estrategias'
         ? `${this.estrategiasUrl}/${id}`
         : `${this.planosUrl}/${id}`;
+
     this.http.delete(url).subscribe(
       () => {
+        this.mensagemSucesso = 'Excluído com sucesso!';
+        setTimeout(() => this.fecharMensagemSucesso(), 3000); // Fecha automaticamente após 3 segundos
         if (this.abaAtual === 'estrategias') {
           this.carregarEstrategias();
         } else {
@@ -104,5 +148,38 @@ export class CadastroComponent implements OnInit {
         console.error(`Erro ao excluir o ${this.abaAtual}:`, error);
       }
     );
+  }
+
+  confirmarExclusao(): void {
+    if (this.itemSelecionadoId !== null) {
+      const url =
+        this.abaAtual === 'estrategias'
+          ? `${this.estrategiasUrl}/${this.itemSelecionadoId}`
+          : `${this.planosUrl}/${this.itemSelecionadoId}`;
+  
+      this.http.delete(url).subscribe(
+        () => {
+          this.mensagemSucesso = 'Item excluído com sucesso!';
+          setTimeout(() => this.fecharMensagemSucesso(), 3000);
+          if (this.abaAtual === 'estrategias') {
+            this.carregarEstrategias();
+          } else {
+            this.carregarPlanosAcao();
+          }
+          this.itemSelecionadoId = null; // Limpa o ID após a exclusão
+        },
+        error => {
+          console.error('Erro ao excluir:', error);
+        }
+      );
+    }
+  }
+
+  definirItemParaExcluir(id: number): void {
+    this.itemSelecionadoId = id; // Define o ID do item a ser excluído
+  }
+
+  fecharMensagemSucesso(): void {
+    this.mensagemSucesso = null;
   }
 }

@@ -48,7 +48,7 @@
           <td>{{ estrategia.status }}</td>
           <td>
             <i class="fas fa-edit text-warning me-3" (click)="editar(estrategia)" title="Editar"></i>
-            <i class="fas fa-trash text-danger" (click)="excluir(estrategia.index)" title="Excluir"></i>
+            <i class="fas fa-trash text-danger" (click)="definirItemParaExcluir(estrategia.index)" title="Excluir" data-bs-toggle="modal" data-bs-target="#confirmModal"></i>
           </td>
         </tr>
       </tbody>
@@ -81,7 +81,7 @@
           <td>{{ plano.dataFim }}</td>
           <td>
             <i class="fas fa-edit text-warning me-3" (click)="editar(plano)" title="Editar"></i>
-            <i class="fas fa-trash text-danger" (click)="excluir(plano.index)" title="Excluir"></i>
+            <i class="fas fa-trash text-danger" (click)="definirItemParaExcluir(plano.index)" title="Excluir" data-bs-toggle="modal" data-bs-target="#confirmModal"></i>
           </td>
         </tr>
       </tbody>
@@ -102,4 +102,136 @@
       </ul>
     </nav>
   </div>
+</div>
+
+<!-- Modal de Edição -->
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  role="dialog"
+  [ngClass]="{ show: mostrarModalEdicao }"
+  [ngStyle]="{ display: mostrarModalEdicao ? 'block' : 'none' }"
+  aria-labelledby="editModalLabel"
+  aria-hidden="!mostrarModalEdicao"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">
+          Editar {{ abaAtual === 'estrategias' ? 'Estratégia' : 'Plano de Ação' }}
+        </h5>
+        <button type="button" class="btn-close" (click)="fecharModalEdicao()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="editIndicador" class="form-label">Indicador</label>
+            <input
+              type="text"
+              id="editIndicador"
+              class="form-control"
+              [(ngModel)]="itemEditando.indicador"
+              name="indicador"
+              readonly
+            />
+          </div>
+          <div class="mb-3" *ngIf="abaAtual === 'estrategias'">
+            <label for="editNomeEstrategia" class="form-label">Nome da Estratégia</label>
+            <input
+              type="text"
+              id="editNomeEstrategia"
+              class="form-control"
+              [(ngModel)]="itemEditando.nomeEstrategia"
+              name="nomeEstrategia"
+            />
+          </div>
+          <div class="mb-3" *ngIf="abaAtual === 'planos'">
+            <label for="editPlanoDeAcao" class="form-label">Plano de Ação</label>
+            <input
+              type="text"
+              id="editPlanoDeAcao"
+              class="form-control"
+              [(ngModel)]="itemEditando.planoDeAcao"
+              name="planoDeAcao"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="editStatus" class="form-label">Status</label>
+            <input
+              type="text"
+              id="editStatus"
+              class="form-control"
+              [(ngModel)]="itemEditando.status"
+              name="status"
+            />
+          </div>
+          <div class="mb-3" *ngIf="abaAtual === 'planos'">
+            <label for="editObservacao" class="form-label">Observação</label>
+            <input
+              type="text"
+              id="editObservacao"
+              class="form-control"
+              [(ngModel)]="itemEditando.observacao"
+              name="observacao"
+            />
+          </div>
+          <div class="mb-3" *ngIf="abaAtual === 'planos'">
+            <label for="editDataInicio" class="form-label">Data Início</label>
+            <input
+              type="date"
+              id="editDataInicio"
+              class="form-control"
+              [(ngModel)]="itemEditando.dataInicio"
+              name="dataInicio"
+            />
+          </div>
+          <div class="mb-3" *ngIf="abaAtual === 'planos'">
+            <label for="editDataFim" class="form-label">Data Fim</label>
+            <input
+              type="date"
+              id="editDataFim"
+              class="form-control"
+              [(ngModel)]="itemEditando.dataFim"
+              name="dataFim"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="fecharModalEdicao()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarEdicao()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Confirmação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza de que deseja excluir este item?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmarExclusao()">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mensagem de Sucesso -->
+<div
+  *ngIf="mensagemSucesso"
+  class="alert alert-success alert-dismissible fade show"
+  role="alert"
+>
+  {{ mensagemSucesso }}
+  <button type="button" class="btn-close" (click)="fecharMensagemSucesso()"></button>
 </div>
